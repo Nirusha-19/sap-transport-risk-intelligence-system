@@ -82,27 +82,30 @@ rag          = get_rag_engine()
 # ================================================================
 # LOAD MODEL + SHAP + COMPARISON
 # ================================================================
+import os
+base_path = os.path.dirname(os.path.abspath(__file__))
+
 try:
-    with open("model/model.pkl", "rb") as f:
+    with open(os.path.join(base_path, "model/model.pkl"), "rb") as f:
         model = pickle.load(f)
 except:
     st.error("⚠ Model not found. Please train the model first.")
     st.stop()
 
 try:
-    with open("model/shap_explainer.pkl", "rb") as f:
+    with open(os.path.join(base_path, "model/shap_explainer.pkl"), "rb") as f:
         shap_explainer = pickle.load(f)
 except:
     shap_explainer = None
 
 try:
-    with open("model/model_comparison.pkl", "rb") as f:
+    with open(os.path.join(base_path, "model/model_comparison.pkl"), "rb") as f:
         model_comparison = pickle.load(f)
 except:
     model_comparison = None
 
 try:
-    with open("model/best_model_name.txt", "r") as f:
+    with open(os.path.join(base_path, "model/best_model_name.txt"), "r") as f:
         best_model_name = f.read().strip()
 except:
     best_model_name = "Unknown"
