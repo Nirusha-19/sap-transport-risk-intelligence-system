@@ -1,4 +1,4 @@
-streamlit==1.35.0
+streamlit
 pandas
 numpy
 scikit-learn
@@ -13,7 +13,6 @@ firebase-admin
 groq
 reportlab
 imbalanced-learn
-mlflow
 shap
 xgboost
 lightgbm
