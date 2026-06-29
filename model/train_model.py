@@ -90,7 +90,7 @@ models = {
                         n_shared=1,
                         seed=42,
                         verbose=1,
-                        device_name='mps'),
+                        device_name='cpu'),
 }
 
 os.makedirs("model", exist_ok=True)

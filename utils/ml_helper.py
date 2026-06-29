@@ -26,10 +26,11 @@ def preprocess(df: pd.DataFrame) -> pd.DataFrame:
 def predict(model, df: pd.DataFrame):
     X = df[FEATURES].values
     preds = model.predict(X)
-    return [risk_map[p] for p in preds]
+    if hasattr(preds, 'flatten'):
+        preds = preds.flatten()
+    return [risk_map[int(p)] for p in preds]
 
 
-# ADDED ↓↓↓
 def get_shap_values(explainer, df_processed: pd.DataFrame):
     """Return raw SHAP values array + feature names."""
     X = df_processed[FEATURES].values

@@ -88,8 +88,8 @@ base_path = os.path.dirname(os.path.abspath(__file__))
 try:
     with open(os.path.join(base_path, "model/model.pkl"), "rb") as f:
         model = pickle.load(f)
-except:
-    st.error("⚠ Model not found. Please train the model first.")
+except Exception as e:
+    st.error(f"⚠ Model error: {e}")
     st.stop()
 
 try:

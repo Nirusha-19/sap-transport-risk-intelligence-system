@@ -8,14 +8,18 @@ RUN apt-get update && apt-get install -y \
     git \
     git-lfs \
     libgomp1 \
-    && rm -rf /var/lib/apt/lists/* \
-    && git lfs install
+    && rm -rf /var/lib/apt/lists/*
 
 COPY . .
 
-RUN git lfs pull 2>/dev/null || true
-
 RUN pip3 install -r requirements.txt
+
+RUN pip3 install 'huggingface_hub[hf_xet]' hf-xet
+
+ARG HF_TOKEN
+ENV HF_TOKEN=$HF_TOKEN
+
+RUN python3 download_models.py
 
 EXPOSE 8501
 
