@@ -6,3 +6,8 @@ __pycache__/
 mlruns/
 catboost_info/
 mlflow.db
+model/model.pkl
+model/shap_explainer.pkl
+model/model_comparison.pkl
+model/feature_names.pkl
+data/sap_transport_dataset.csv
