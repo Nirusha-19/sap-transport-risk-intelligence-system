@@ -1,9 +1,6 @@
 # MODELS: XGBoost, LightGBM, CatBoost, RandomForest, TabNet
-# ADDED: SMOTE oversampling
-# ADDED: MLflow tracking for every model
-# ADDED: SHAP explainer saved as shap_explainer.pkl
-# ADDED: model_comparison.pkl and feature_names.pkl saved
-# ADDED: 8% noise handled, CV tiebreaker, TabNet special handling
+# SMOTE oversampling
+# MLflow tracking for every model
 
 import os, pickle, warnings
 import pandas as pd
