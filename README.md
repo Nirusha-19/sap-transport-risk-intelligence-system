@@ -143,24 +143,28 @@ A live leaderboard showing Test F1 and CV F1 scores for all 5 trained models. Al
 
 ## 📁 Project Structure
 
+```
 sap-transport-risk-intelligence-system/
-├── app_firebase.py ← Main Streamlit application (10 tabs)
+├── app_firebase.py          ← Main Streamlit application (10 tabs)
 ├── model/
-│ ├── model.pkl ← Best model
-│ ├── shap_explainer.pkl ← SHAP explainer (CatBoost)
-│ ├── model_comparison.pkl ← All 5 model results
-│ └── train_model.py ← Training pipeline
+│   ├── model.pkl            ← Best model (auto-selected by F1 + CV-F1)
+│   ├── shap_explainer.pkl   ← SHAP explainer (best tree-based model)
+│   ├── model_comparison.pkl ← All 5 model results
+│   ├── best_model_name.txt  ← Name of the best model
+│   └── train_model.py       ← Training pipeline (5 models + MLflow)
 ├── utils/
-│ ├── firebase_helper.py ← Firebase CRUD operations
-│ ├── ml_helper.py ← Preprocessing + SHAP utilities
-│ ├── rag_helper.py ← RAG engine + knowledge base
-│ └── gauge.py ← Risk gauge component
+│   ├── firebase_helper.py   ← Firebase CRUD operations
+│   ├── ml_helper.py         ← Preprocessing + SHAP utilities
+│   ├── rag_helper.py        ← RAG engine + knowledge base
+│   └── gauge.py             ← Risk gauge component
 ├── scripts/
-│ └── generate_dataset.py ← Synthetic dataset generation
+│   └── generate_dataset.py  ← Synthetic dataset generation
 ├── data/
-│ └── sap_transport_dataset.csv
-├── Dockerfile
-└── requirements.txt
+│   └── sap_transport_dataset.csv    ← 10,000 SAP transport records
+├── download_models.py       ← Downloads model files from HF at Docker build time
+├── Dockerfile               ← Docker config for HuggingFace Spaces
+└── requirements.txt         ← Python dependencies
+```
 
 ---
 
@@ -209,6 +213,7 @@ CUDA_VISIBLE_DEVICES="" OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 python3 model/train_
 ## 👩‍💻 Author
 
 **Nirusha Mantralaya Ramesh**
+- 🤗 HuggingFace: [nirusha-mr](https://huggingface.co/nirusha-mr)
 - 🐙 GitHub: [Nirusha-19](https://github.com/Nirusha-19)
 
 ---
