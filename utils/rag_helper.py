@@ -1,5 +1,4 @@
-# NEW FILE: RAG engine with TF-IDF retrieval + prompt builder
-# Replaces the raw GPT prompt in the AI tab with retrieval-augmented generation
+# RAG engine with TF-IDF retrieval + prompt builder
 
 from __future__ import annotations
 import numpy as np
@@ -159,7 +158,7 @@ Provide a structured answer with:
         )
 
 
-# Singleton so Streamlit doesn't rebuild it on every rerun
+# Singleton so streamlit doesn't rebuild it on every rerun
 _engine: RAGEngine | None = None
 
 def get_rag_engine() -> RAGEngine:
