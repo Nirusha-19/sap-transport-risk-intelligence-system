@@ -702,7 +702,7 @@ if not df.empty:
                         st.error(f"Sync error: {e}")
 
     # ============================================================
-    # TAB 4 — AI INSIGHTS (clean, RAG works silently behind the scenes)
+    # TAB 4 — AI INSIGHTS (RAG works silently behind the scenes)
     # ============================================================
     with tab4:
         st.subheader("🧠 AI Insights")
