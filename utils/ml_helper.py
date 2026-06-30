@@ -1,6 +1,3 @@
-# ADDED: get_shap_values() and shap_summary_for_row()
-# CHANGED: preprocess now returns a copy (safe for chaining)
-
 import pickle
 import pandas as pd
 import numpy as np
@@ -16,7 +13,7 @@ risk_map    = {0: 'LOW', 1: 'MEDIUM', 2: 'HIGH'}
 
 
 def preprocess(df: pd.DataFrame) -> pd.DataFrame:
-    df = df.copy()                                  # CHANGED: was mutating in place
+    df = df.copy()                                 
     df['module']                = df['module'].map(module_map)
     df['transport_stage']       = df['transport_stage'].map(stage_map)
     df['change_request_status'] = df['change_request_status'].map(status_map)
