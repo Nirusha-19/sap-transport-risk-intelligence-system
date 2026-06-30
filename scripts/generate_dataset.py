@@ -1,7 +1,3 @@
-# CHANGED: lowered range to 10-120 (was 10-300)
-# CHANGED: thresholds adjusted for ~33% each class (was heavily HIGH-skewed)
-# CHANGED: 10000 records with balanced thresholds
-
 import pandas as pd
 import random
 import os
@@ -17,13 +13,13 @@ data = []
 for i in range(10000):                         
     module    = random.choice(modules)
     objects   = random.randint(1, 6)
-    lines     = random.randint(10, 120)        # CHANGED: was randint(10, 300)
+    lines     = random.randint(10, 120)        
     conflicts = random.randint(0, 2)
-    failures  = random.randint(0, 3)           # CHANGED: was randint(0, 4)
+    failures  = random.randint(0, 3)           
     stage     = random.choice(stages)
     status    = random.choice(statuses)
 
-    # CHANGED: New balanced thresholds
+    # Balanced thresholds
     # HIGH   ~33%: conflicts==2 OR failures==3
     # MEDIUM ~33%: lines>80 OR failures==2 OR (FI & lines>60)
     # LOW    ~33%: everything else
