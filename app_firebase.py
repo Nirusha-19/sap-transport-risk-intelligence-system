@@ -109,6 +109,8 @@ try:
         best_model_name = f.read().strip()
 except:
     best_model_name = "Unknown"
+TREE_MODELS = ["CatBoost", "LightGBM", "XGBoost", "RandomForest"]
+shap_model_name = best_model_name if best_model_name in TREE_MODELS else "CatBoost"
 
 # ================================================================
 # HELPERS
@@ -658,7 +660,7 @@ if not df.empty:
         st.subheader("📄 Data Explorer")
         st.info("💡 Rows color-coded by Predicted Risk level.")
 
-        # FIX: color ONLY based on Predicted Risk column
+        # Color ONLY based on Predicted Risk column
         def highlight_risk(row):
             risk = row.get('Predicted Risk', '')
             if risk == 'HIGH':
@@ -700,7 +702,7 @@ if not df.empty:
                         st.error(f"Sync error: {e}")
 
     # ============================================================
-    # TAB 4 — AI INSIGHTS (clean, RAG works silently behind scenes)
+    # TAB 4 — AI INSIGHTS (clean, RAG works silently behind the scenes)
     # ============================================================
     with tab4:
         st.subheader("🧠 AI Insights")
@@ -1009,7 +1011,7 @@ if not df.empty:
             except Exception as e:
                 st.warning(f"⚠ Could not save to Firebase: {e}")
 
-            # FIX: AI explanation auto-generates (no nested button)
+            # AI explanation auto-generates (no nested button)
             st.markdown("### 🤖 AI Explanation")
             with st.spinner("AI analyzing prediction..."):
                 prompt_exp = f"""
@@ -1520,10 +1522,10 @@ if not df.empty:
             - **LightGBM** — Microsoft's fast enterprise booster
             - **CatBoost** — native categorical support, perfect for SAP modules
             - **RandomForest** — classical ensemble, best SHAP explainability
-            - **TabNet** — attention-based deep learning, M4 GPU accelerated
+            - **TabNet** — attention-based deep learning for tabular data
 
             All models trained on **SMOTE-balanced** data tracked with **MLflow**.
-            Best model: **{best_model_name}** | SHAP explanations: **CatBoost**
+            Best model: **{best_model_name}** (auto-selected by F1 + CV-F1 score) | SHAP explanations: **{shap_model_name}**
             """)
 
 # ================================================================

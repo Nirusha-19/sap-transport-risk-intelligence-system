@@ -39,13 +39,13 @@ In large enterprise SAP environments, a single bad transport in any of the four 
 - **SD (Sales and Distribution)** manages customer orders and pricing conditions. A faulty deployment can cause incorrect billing and order processing failures.
 - **HR (Human Resources)** handles payroll calculations and GDPR-sensitive employee records. A faulty deployment can result in incorrect salary processing and compliance violations.
 
-Manual risk review is slow, inconsistent, and doesn't scale. This system catches that risk early, automatically.
+Manual risk review is **slow**, **inconsistent**, and **doesn't scale**. This system catches that risk early, automatically.
 
 ---
 
-## 🔍 What It Does
+## 🔍 What It Does?
 
-- **Classifies** the risk level of every SAP transport as LOW, MEDIUM, or HIGH — 5 ML models are trained and compared, and the best one is auto-selected based on F1 and CV-F1 score (best achieved: 0.9513)
+- **Classifies** the risk level of every SAP transport as LOW, MEDIUM, or HIGH — 5 ML models are trained and compared, and the best one is auto-selected based on F1 and CV-F1 score (best achieved: **0.9513**)
 - **Explains** each prediction using SHAP, showing which features drove the risk up or down
 - **Flags** unusual transports using Isolation Forest anomaly detection
 - **Answers questions** about transport risk using Groq LLaMA 3.3 70B backed by RAG, grounded in a curated SAP knowledge base
@@ -60,7 +60,7 @@ Five models were trained on **10,000 SAP transport records** with SMOTE class ba
 
 | Model | F1 Score | Type |
 |-------|:--------:|------|
-| **CatBoost ✅ Winner** | **0.9513** | Gradient Boosting |
+| **CatBoost (Winner)** | **0.9513** | Gradient Boosting |
 | TabNet | 0.9507 | Deep Learning |
 | LightGBM | 0.9502 | Gradient Boosting |
 | RandomForest | 0.9426 | Ensemble |
@@ -93,7 +93,7 @@ Select any transport and click **Generate AI Insight** to get a detailed explana
 ---
 
 **⚡ Manual Prediction**
-Select the transport attributes — Module, Stage, and Status from dropdown menus, and adjust Objects Changed, Lines Changed, Conflicts, History Failures and more, then click redict Risk. The result is shown instantly with the predicted risk level and confidence score, a probability breakdown chart across all three classes, a SHAP Feature Impact bar chart showing which features increased or decreased the risk, and an Input Feature Values chart. The prediction is saved to Firebase automatically and an AI Explanation is generated below.
+Select the transport attributes — Module, Stage, and Status from dropdown menus, and adjust Objects Changed, Lines Changed, Conflicts, History Failures and more, then click **Predict Risk**. The result is shown instantly with the predicted risk level and confidence score, a probability breakdown chart across all three classes, a SHAP Feature Impact bar chart showing which features increased or decreased the risk, and an Input Feature Values chart. The prediction is saved to Firebase automatically and an AI Explanation is generated below.
 
 ---
 
@@ -144,39 +144,22 @@ A live leaderboard showing Test F1 and CV F1 scores for all 5 trained models. Al
 ## 📁 Project Structure
 
 sap-transport-risk-intelligence-system/
-
-├── app_firebase.py          ← Main Streamlit application (10 tabs)
-
+├── app_firebase.py ← Main Streamlit application (10 tabs)
 ├── model/
-
-│   ├── model.pkl            ← Best model (CatBoost)
-
-│   ├── shap_explainer.pkl   ← SHAP explainer (CatBoost)
-
-│   ├── model_comparison.pkl ← All 5 model results
-
-│   └── train_model.py       ← Training pipeline
-
+│ ├── model.pkl ← Best model
+│ ├── shap_explainer.pkl ← SHAP explainer (CatBoost)
+│ ├── model_comparison.pkl ← All 5 model results
+│ └── train_model.py ← Training pipeline
 ├── utils/
-
-│   ├── firebase_helper.py   ← Firebase CRUD operations
-
-│   ├── ml_helper.py         ← Preprocessing + SHAP utilities
-
-│   ├── rag_helper.py        ← RAG engine + knowledge base
-
-│   └── gauge.py             ← Risk gauge component
-
+│ ├── firebase_helper.py ← Firebase CRUD operations
+│ ├── ml_helper.py ← Preprocessing + SHAP utilities
+│ ├── rag_helper.py ← RAG engine + knowledge base
+│ └── gauge.py ← Risk gauge component
 ├── scripts/
-
-│   └── generate_dataset.py  ← Synthetic dataset generation
-
+│ └── generate_dataset.py ← Synthetic dataset generation
 ├── data/
-
-│   └── sap_transport_dataset.csv
-
+│ └── sap_transport_dataset.csv
 ├── Dockerfile
-
 └── requirements.txt
 
 ---
