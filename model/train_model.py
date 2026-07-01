@@ -165,7 +165,7 @@ if best_name in tree_models:
     shap_clf  = best_clf
     shap_name = best_name
 else:
-    # Best model is TabNet → use best tree model for SHAP
+    # Use best tree model for SHAP
     shap_name = max(
         [m for m in results if m in tree_models],
         key=lambda k: results[k]["f1"]
