@@ -27,7 +27,7 @@ Manual risk review is **slow**, **inconsistent**, and **doesn't scale**. This sy
 - **Classifies** the risk level of every SAP transport as LOW, MEDIUM, or HIGH — 5 ML models are trained and compared, and the best one is auto-selected based on F1 and CV-F1 score (best achieved: **0.9513**)
 - **Explains** each prediction using SHAP, showing which features drove the risk up or down
 - **Flags** unusual transports using Isolation Forest anomaly detection
-- **Answers questions** about transport risk using Groq LLaMA 3.3 70B backed by RAG, grounded in a curated SAP knowledge base
+- **Answers questions** about transport risk using Groq LLaMA 4 Scout backed by RAG, grounded in a curated SAP knowledge base
 - **Saves** every prediction, AI response, and chat session to Firebase for audit and history
 - **Calculates** business impact — estimated annual savings, ROI percentage, payback period, and SLA compliance
 
@@ -110,7 +110,7 @@ A live leaderboard showing Test F1 and CV F1 scores for all 5 trained models. Al
 | Gradient Boosting | XGBoost · LightGBM · CatBoost |
 | Classical ML | scikit-learn — RandomForest · Isolation Forest |
 | Explainability | SHAP |
-| LLM | Groq API — LLaMA 3.3 70B |
+| LLM | Groq API — LLaMA 4 Scout |
 | RAG | TF-IDF + Cosine Similarity |
 | Cloud Storage | Firebase |
 | Experiment Tracking | MLflow |
