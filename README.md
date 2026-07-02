@@ -1,24 +1,3 @@
----
-title: SAP Transport Risk Intelligence System
-emoji: 🚀
-colorFrom: red
-colorTo: purple
-sdk: docker
-app_port: 8501
-tags:
-  - streamlit
-  - machine-learning
-  - deep-learning
-  - tabnet
-  - shap
-  - mlflow
-  - firebase
-  - groq
-pinned: false
-short_description: SAP Transport Risk Analysis using ML, SHAP and RAG
-license: mit
----
-
 # 🚀 SAP Transport Risk Intelligence System
 
 [![Python](https://img.shields.io/badge/Python-3.11-blue)](https://python.org)
