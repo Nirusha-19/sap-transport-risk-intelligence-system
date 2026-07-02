@@ -65,7 +65,7 @@ st.markdown("""
         <span style='background:#4a148c;color:white;padding:3px 10px;border-radius:20px;font-size:0.75em;white-space:nowrap'>🧠 TabNet Deep Learning</span>
         <span style='background:#1565c0;color:white;padding:3px 10px;border-radius:20px;font-size:0.75em;white-space:nowrap'>📊 5-Model MLflow Tracking</span>
         <span style='background:#00695c;color:white;padding:3px 10px;border-radius:20px;font-size:0.75em;white-space:nowrap'>🔍 SHAP Explainability</span>
-        <span style='background:#e65100;color:white;padding:3px 10px;border-radius:20px;font-size:0.75em;white-space:nowrap'>🤖 Groq LLaMA 3.3 70B</span>
+        <span style='background:#e65100;color:white;padding:3px 10px;border-radius:20px;font-size:0.75em;white-space:nowrap'>🤖 Groq LLaMA 4 Scout</span>
         <span style='background:#bf360c;color:white;padding:3px 10px;border-radius:20px;font-size:0.75em;white-space:nowrap'>🔥 Firebase Firestore</span>
         <span style='background:#37474f;color:white;padding:3px 10px;border-radius:20px;font-size:0.75em;white-space:nowrap'>⚡ Real-Time Monitoring</span>
     </div>
@@ -125,7 +125,7 @@ def save_chart(fig):
 def ask_ai(prompt: str) -> str:
     try:
         res = groq_client.chat.completions.create(
-            model="llama-3.3-70b-versatile",
+            model="meta-llama/llama-4-scout-17b-16e-instruct",
             messages=[{"role": "user", "content": prompt}]
         )
         return res.choices[0].message.content
@@ -136,7 +136,7 @@ def ask_ai_rag(query: str, transport_ctx=None, shap_ctx=None) -> str:
     prompt = rag.build_prompt(query, transport_ctx, shap_ctx)
     try:
         res = groq_client.chat.completions.create(
-            model="llama-3.3-70b-versatile",
+            model="meta-llama/llama-4-scout-17b-16e-instruct",
             messages=[{"role": "user", "content": prompt}],
             max_tokens=600,
         )
@@ -147,7 +147,7 @@ def ask_ai_rag(query: str, transport_ctx=None, shap_ctx=None) -> str:
 def ask_ai_with_history(messages: list) -> str:
     try:
         res = groq_client.chat.completions.create(
-            model="llama-3.3-70b-versatile",
+            model="meta-llama/llama-4-scout-17b-16e-instruct",
             messages=messages
         )
         return res.choices[0].message.content
@@ -706,7 +706,7 @@ if not df.empty:
     # ============================================================
     with tab4:
         st.subheader("🧠 AI Insights")
-        st.caption(f"Powered by Groq LLaMA 3.3 70B | Best Model: {best_model_name}")
+        st.caption(f"Powered by Groq LLaMA 4 Scout | Best Model: {best_model_name}")
 
         if not filtered_df.empty:
             high_c  = (filtered_df['Predicted Risk']=="HIGH").sum()
