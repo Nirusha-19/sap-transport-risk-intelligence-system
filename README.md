@@ -193,7 +193,7 @@ CUDA_VISIBLE_DEVICES="" OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 python3 model/train_
 
 **Nirusha Mantralaya Ramesh**
 - 🤗 HuggingFace: [nirusha-mr](https://huggingface.co/nirusha-mr)
-- 🐙 GitHub: [Nirusha-19](https://github.com/Nirusha-19)
+- 🔗 GitHub: [Nirusha-19](https://github.com/Nirusha-19)
 
 ---
 
